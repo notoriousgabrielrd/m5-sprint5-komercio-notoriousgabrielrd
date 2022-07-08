@@ -2,6 +2,7 @@ from rest_framework import serializers
 from . import models
 
 class UserSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField()
     class Meta:
         model        = models.User
         fields       = ["id","email","password","first_name","last_name","is_seller","date_joined"]
@@ -10,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate_email(self,value):
         if models.User.objects.filter(email__iexact=value).exists():
-            raise serializers.ValidationError("Email já existe.")
+            raise serializers.ValidationError("Email already exists!")
 
         return value
 

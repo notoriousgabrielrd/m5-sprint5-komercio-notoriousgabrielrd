@@ -15,6 +15,11 @@ class UserView(ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+    # def perform_create(self, serializer):
+    #     serializer.save()
+
+
+
 class LoginUserView(APIView):
 
     def post(self, request):
