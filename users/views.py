@@ -53,3 +53,5 @@ class UserViewDetail(ListAPIView):
         max_users = self.kwargs["num"]
 
         return self.queryset.order_by("-id")[0:max_users]
+
+        
