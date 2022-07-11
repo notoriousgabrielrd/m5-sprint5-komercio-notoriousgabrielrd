@@ -8,7 +8,7 @@ class PostProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model           = ProductsModel
         fields          = ["id","description","price","quantity","is_active","seller"]
-        extra_kwargs    = {"id":{"read_only":True},"is_active":{"read_only":True}}
+        extra_kwargs    = {"id":{"read_only":True},"is_active":{"read_only":True},"quantity":{"min_value":0}}
         # depth           = 1
 
 class GetProductsSerializer(serializers.ModelSerializer):
