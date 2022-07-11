@@ -17,6 +17,7 @@ class CustomUserManager(BaseUserManager):
             last_name       = last_name,
             is_superuser    = False,
             is_seller       = is_seller,
+            is_active       = True,
             **extra_fields
         )
 
@@ -47,7 +48,7 @@ class CustomUserManager(BaseUserManager):
 
     #     return user
 
-    def create_superuser(self,email,password,first_name,last_name,is_seller,**extra_fields):
+    def create_superuser(self,email,password,first_name,last_name,**extra_fields):
         
         if not email:
             raise ValueError("O email é um campo obrigatório.")
@@ -59,10 +60,11 @@ class CustomUserManager(BaseUserManager):
             first_name      = first_name,
             last_name       = last_name,
             is_superuser    = True,
-            is_seller       = is_seller,
+            is_seller       = False,
+            is_active       = True,
             **extra_fields
         )
 
-        user.set_password(using=self._db)
-
+        user.set_password(password)
+        user.save(using = self._db)
         return user

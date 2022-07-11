@@ -8,3 +8,6 @@ class ProductsModel(models.Model):
     is_active = models.BooleanField(default=True)
 
     seller = models.ForeignKey("users.User",on_delete=models.CASCADE,related_name="products")
+
+    # 1 USER ( SELLER ) ----------- N PRODUTOS
+    # 1 PRODUTO         ----------- 1 USER ( SELLER )
