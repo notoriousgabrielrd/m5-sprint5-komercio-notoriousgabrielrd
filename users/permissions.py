@@ -9,7 +9,6 @@ class IsOwner(permissions.BasePermission):
 
 
 
-
 class IsSuperUserPermission(permissions.BasePermission):
     def has_permission(self, request, view):
 

@@ -11,3 +11,6 @@ class ProductsModel(models.Model):
 
     # 1 USER ( SELLER ) ----------- N PRODUTOS
     # 1 PRODUTO         ----------- 1 USER ( SELLER )
+
+
+    

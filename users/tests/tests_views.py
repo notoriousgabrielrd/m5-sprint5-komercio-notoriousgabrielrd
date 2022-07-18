@@ -51,6 +51,7 @@ class UserViewTest(APITestCase):
 
     def test_login_auth_token(self):
         new_user = User.objects.create_user(**self.seller)
+
         res = self.client.post("/api/login/", data=self.user)
         
         self.assertEqual(res.status_code,200)
