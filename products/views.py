@@ -11,13 +11,16 @@ from . import permissions
 
 class ProductsView(utils.SerializerByMethodMixin, generics.ListCreateAPIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [permissions.MyCustomPermission]
+    permission_classes = [permissions.MyCustomPermission,permissions.isSeller]
 
     queryset = models.ProductsModel.objects.all()
     serializer_map = {"GET":serializer.GetProductsSerializer, "POST":serializer.PostProductsSerializer}
     
 
     def perform_create(self, serializer):
+
+        print(type(self.request.user))
+        print(self.request.user)
 
         serializer.save(seller = self.request.user)
 
